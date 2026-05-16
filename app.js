@@ -19,7 +19,7 @@ const app = express();
 // Seguridad basica
 app.use(helmet());
 
-const corsOrigins = (process.env.CORS_ORIGINS || '')
+const corsOrigins = (process.env.CORS_ORIGINS || 'http://tickets.neo-emarketing.com' || 'https://tickets.neo-emarketing.com ')
   .split(',')
   .map(origin => origin.trim())
   .filter(Boolean);
