@@ -45,7 +45,7 @@ const reportController = {
       const [totalRes] = await pool.query(countSql, params);
       const total = totalRes[0].total;
 
-      // 2. Obtener página
+      // 2. Obtener pagina
       const offset = (pagina - 1) * por_pagina;
       const dataSql = `
         SELECT 
@@ -110,7 +110,7 @@ const reportController = {
       const [totalRes] = await pool.query(countSql, params);
       const total = totalRes[0].total;
 
-      // Página
+      // Pagina
       const offset = (pagina - 1) * por_pagina;
       const dataSql = `
         SELECT 
@@ -169,7 +169,7 @@ const reportController = {
             nombre_cliente AS Cliente,
             email_cliente AS Email,
             pax AS PAX,
-            DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') AS 'Fecha creación'
+            DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') AS 'Fecha creacion'
           FROM tickets
           WHERE status = 'active' AND scanned_at IS NULL
         `;

@@ -13,6 +13,6 @@ router.use((req, res, next) => {
 
 router.get('/escaneos', reportController.reporteEscaneos);
 router.get('/no-escaneados', reportController.reporteNoEscaneados);
-router.get('/exportar', reportController.exportarCSV);  // ← agregar esta línea
+router.get('/exportar', reportController.exportarCSV);
 
 module.exports = router;
