@@ -1,5 +1,8 @@
 const nodemailer = require('nodemailer');
+const path = require('path');
 require('dotenv').config();
+
+const LOGO_PATH = path.join(__dirname, '../assets/unnamed.png');
 
 const emailService = {
   transporter: null,
@@ -42,7 +45,7 @@ const emailService = {
           // Adjuntamos el logo directamente para evitar bloqueos
           {
             filename: 'logo-granja.png',
-            path: '../posBack/assets/unnamed.png',
+            path: LOGO_PATH,
             cid: 'logo_granja' // Este ID lo usaremos en el HTML
           }
         ]
@@ -175,7 +178,7 @@ const emailService = {
               
               ${ticketData.qr_base64 ? `
               <div class="ticket-qr">
-                  <img src="cid:codigo_qr_ticket" alt="Código QR" style="width: 150px; height: 150px;">
+                  <img src="cid:codigo_qr_ticket" alt="Código QR" style="width: 280px; height: 280px; max-width: 100%;">
               </div>
               ` : ''}
               
@@ -238,7 +241,7 @@ const emailService = {
             <p style="font-size:15px; line-height:1.6;">${mensaje}</p>
             <div style="text-align:center; margin:30px 0;">
               <p style="font-size:24px; font-weight:bold; color:#7B0000;">${ticketData.short_code}</p>
-              ${ticketData.qr_code ? `<img src="cid:codigo_qr_ticket" alt="QR" style="width:180px; height:180px;">` : ''}
+              ${ticketData.qr_code ? `<img src="cid:codigo_qr_ticket" alt="QR" style="width:280px; height:280px; max-width:100%;">` : ''}
             </div>
             <p style="font-size:13px; color:#666;">Fecha: ${new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric', hour:'2-digit', minute:'2-digit' })}</p>
           </div>
@@ -251,7 +254,7 @@ const emailService = {
     // Adjuntar logo y QR embebido (si existe)
     mailOptions.attachments.push({
       filename: 'logo-granja.png',
-      path: '../posBack/assets/unnamed.png', // Ajusta la ruta según tu proyecto
+      path: LOGO_PATH,
       cid: 'logo_granja'
     });
 
